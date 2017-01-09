@@ -45,6 +45,7 @@ public final class QueryUtils {
     }
 
     public static String makeHTTPConnection(URL url){
+        Log.v("paras", "In httpConnection");
         String response="";
         HttpURLConnection connection=null;
         InputStream inputStream=null;
@@ -87,7 +88,7 @@ public final class QueryUtils {
             BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
             try {
                 String line = bufferedReader.readLine();
-                if(line!=null){
+                while(line!=null){
                     response.append(line);
                     line = bufferedReader.readLine();
                 }

@@ -5,7 +5,7 @@ package com.example.android.booksapp;
  */
 
 public class Book {
-    String mTitle, mAuthor, mDesc;
+    private String mTitle, mAuthor, mDesc;
 
     public Book(String title, String author, String desc){
         mTitle = title;
