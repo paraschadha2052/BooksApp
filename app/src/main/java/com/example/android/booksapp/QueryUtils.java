@@ -113,14 +113,15 @@ public final class QueryUtils {
                 JSONObject item1 = items.getJSONObject(i).getJSONObject("volumeInfo");
 
                 author = new StringBuilder();
-                arr = item1.getJSONArray("authors");
-                author.append(arr.getString(0));
-                for(int j=1;j<arr.length();j++){
-                    author.append(", ");
-                    author.append(arr.getString(j));
+                arr = item1.optJSONArray("authors");
+                if(arr!=null && arr.length()>=1) {
+                    author.append(arr.getString(0));
+                    for (int j = 1; j < arr.length(); j++) {
+                        author.append(", ");
+                        author.append(arr.getString(j));
+                    }
                 }
-                author.append(" - ");
-                author.append(item1.optString("publishedDate", ""));
+                if(item1.optString("publishedDate", "").length()>=4) author.append(" - "+item1.optString("publishedDate", "").substring(0, 4));
 
                 desc = item1.optString("description", "");
                 ans.add(new Book(item1.getString("title"), author.toString(), desc));
