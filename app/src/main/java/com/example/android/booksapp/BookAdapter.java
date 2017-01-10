@@ -1,7 +1,10 @@
 package com.example.android.booksapp;
 
 import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
 import android.support.annotation.NonNull;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -27,16 +30,42 @@ public class BookAdapter extends ArrayAdapter<Book>{
             convertView = inflater.inflate(R.layout.list_item, parent, false);
         }
 
-        Book book = getItem(position);
-        TextView title, author, desc;
+        final Book book = getItem(position);
+        final TextView title, author, desc;
 
         title = (TextView) convertView.findViewById(R.id.Title);
         author = (TextView) convertView.findViewById(R.id.author);
         desc = (TextView) convertView.findViewById(R.id.desc);
 
+        title.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                TextView tx = (TextView) v;
+                Intent in = new Intent(Intent.ACTION_VIEW, Uri.parse("http://www.google.com/#q="+book.getmTitle()));
+                getContext().startActivity(in);
+            }
+        });
+
+        desc.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                TextView tx = (TextView) v;
+                if(tx.getEllipsize()==null){
+                    tx.setEllipsize(TextUtils.TruncateAt.END);
+                    tx.setMaxLines(3);
+                }
+                else {
+                    tx.setEllipsize(null);
+                    tx.setMaxLines(Integer.MAX_VALUE);
+                }
+            }
+        });
+
         title.setText(book.getmTitle());
         author.setText(book.getmAuthor());
         desc.setText(book.getmDesc());
+        desc.setEllipsize(TextUtils.TruncateAt.END);
+        desc.setMaxLines(3);
 
         return convertView;
     }
