@@ -124,7 +124,7 @@ public final class QueryUtils {
                 if(item1.optString("publishedDate", "").length()>=4) author.append(" - "+item1.optString("publishedDate", "").substring(0, 4));
 
                 desc = item1.optString("description", "");
-                ans.add(new Book(item1.getString("title"), author.toString(), desc));
+                ans.add(new Book(item1.getString("title"), author.toString(), desc, item1.getJSONObject("imageLinks").getString("thumbnail")));
             }
         } catch (JSONException e) {
             e.printStackTrace();

@@ -53,6 +53,7 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
                 return false;
             }
         });
+        getLoaderManager().initLoader(1, null, MainActivity.this);
 
     }
 
@@ -73,6 +74,7 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
         TextView tx = (TextView) findViewById(R.id.error);
         String text = String.valueOf(topic.getText());
         tx.setText("");
+        tx.setVisibility(View.VISIBLE);
         if (TextUtils.isEmpty(text)) {
             tx.setText("Please enter a valid topic");
         }

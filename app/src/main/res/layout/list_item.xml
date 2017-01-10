@@ -1,35 +1,61 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:padding="10dp">
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    >
 
-    <TextView
-        android:id="@+id/Title"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        tools:text="The Play of Daniel Keyes' Flowers for Algernon"
-        android:textStyle="bold"
-        android:textSize="20sp"
-        android:textColor="@android:color/black"
-        />
+        android:orientation="horizontal"
+        >
 
-    <TextView
-        android:id="@+id/author"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        tools:text="Bert Coules, Daniel Keyes - 1993"
-        android:layout_marginTop="5dp"/>
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_weight="1"
+            android:layout_gravity="center_vertical"
+            android:padding="10dp">
+
+            <TextView
+                android:id="@+id/Title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@android:color/black"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                tools:text="The Play of Daniel Keyes' Flowers for Algernon" />
+
+            <TextView
+                android:id="@+id/author"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                tools:text="Bert Coules, Daniel Keyes - 1993" />
+
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/bookImage"
+            android:layout_width="100dp"
+            android:layout_height="120dp"
+            android:layout_gravity="center_vertical"
+            android:layout_margin="10dp"/>
+    </LinearLayout>
 
     <TextView
         android:id="@+id/desc"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        tools:text="The Heinemann Plays series offers contemporary drama and classic plays in durable classroom editions."
-        android:textColor="@android:color/black"
         android:layout_marginTop="10dp"
-        android:maxLines="3"
-        android:ellipsize="end"/>
+        android:maxLines="0"
+        android:ellipsize="end"
+        android:textColor="@android:color/black"
+        android:padding="10dp"
+        tools:text="The Heinemann Plays series offers contemporary drama and classic plays in durable classroom editions." />
+
 
 </LinearLayout>
